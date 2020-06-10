@@ -3,8 +3,8 @@
         <p> Live Chat with Angular 9 & ASP .NET SignalR</p>
     </header>
     <div class="name-field-enter-chat-button">
-        <input type="text" class="name-field" placeholder="Digite seu nome" />
-        <div class="enter-chat-button">
+        <input #inputName type="text" class="name-field" placeholder="Digite seu nome" />
+        <div class="enter-chat-button" (click) = "onEnterButtonClicked(inputName.value)">
             <p> Entrar no chat</p>
         </div>
     </div>
