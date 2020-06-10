@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace LiveChatServer.Hubs {
 
-    public class LiveChatHub : Hub<ILiveChat>, ILiveChat {
+    public class LiveChatHub : Hub<ILiveChatHub>, ILiveChatHub {
         
         private const string LIVE_CHAT_GROUP = "LiveChatGroup";
 
