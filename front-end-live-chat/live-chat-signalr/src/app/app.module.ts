@@ -1,18 +1,25 @@
+import { RouterModule } from '@angular/router';
+import { AppComponent } from './app.component';
+import { LiveChatComponent } from './views/live-chat/live-chat.component';
+import { LiveChatService } from './services/live-chat-service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
+
 
 import { HomeComponent } from './views/home/home.component';
+import { APP_ROUTES } from './routes/APP_ROUTES';
 
 @NgModule({
   declarations: [
-    HomeComponent
+    AppComponent,
+    HomeComponent,
+    LiveChatComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    RouterModule.forRoot(APP_ROUTES)
   ],
-  providers: [],
-  bootstrap: [HomeComponent]
+  providers: [ LiveChatService ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
