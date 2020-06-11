@@ -2,14 +2,27 @@ main {
     margin: 0 auto;
     border: 5px solid green;
     height: 50vh;
-
-    display: flex;
-    flex-direction: column;
     width: 80%;
 
     p {
         margin: 0;
     }
+}
+
+main, .messages-container, .new-message-container{
+    display: flex;
+}
+
+main, .messages-container {
+    flex-direction: column;
+}
+
+.messages-container {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+
+    border: 1px solid blue;
 }
 
 .message {
@@ -23,4 +36,14 @@ main {
 
 .right-side-message {
     align-self: flex-end;
+}
+
+.new-message-container {
+    height: 20%;
+    align-items: center;
+    justify-content: center;
+}
+
+.send-new-message-btn {
+    cursor: pointer;
 }

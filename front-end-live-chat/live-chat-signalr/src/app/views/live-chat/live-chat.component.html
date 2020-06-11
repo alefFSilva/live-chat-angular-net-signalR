@@ -1,9 +1,18 @@
 <main>
 
-    <div class="message" *ngFor="let message of chatMessages" 
-        [class.right-side-message] = "message.messageType == messageTypeEnumRef.OtherUser"
-        [class.center-side-message] = "message.messageType == messageTypeEnumRef.ChatActions">
-        <p> {{ message.content }} </p>
+    <div class="messages-container">
+        <div class="message" *ngFor="let message of chatMessages" 
+            [class.right-side-message] = "message.messageType == messageTypeEnumRef.OtherUser"
+            [class.center-side-message] = "message.messageType == messageTypeEnumRef.ChatActions">
+            <p> {{ message.content }} </p>
+        </div>
+    </div>
+
+    <div class="new-message-container">
+        <input class="new-message-field" type="text" />
+        <div class="send-new-message-btn">
+            <p> Enviar</p>
+        </div> 
     </div>
 
 </main>
