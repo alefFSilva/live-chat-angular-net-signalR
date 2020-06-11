@@ -1,3 +1,9 @@
-<h2>
-    Live chat cmponent
-</h2>
+<main>
+
+    <div class="message" *ngFor="let message of chatMessages" 
+        [class.right-side-message] = "message.messageType == messageTypeEnumRef.OtherUser"
+        [class.center-side-message] = "message.messageType == messageTypeEnumRef.ChatActions">
+        <p> {{ message.content }} </p>
+    </div>
+
+</main>

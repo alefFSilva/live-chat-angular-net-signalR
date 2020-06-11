@@ -1,0 +1,26 @@
+main {
+    margin: 0 auto;
+    border: 5px solid green;
+    height: 50vh;
+
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+
+    p {
+        margin: 0;
+    }
+}
+
+.message {
+    width: 20%;
+    border: 1px solid red;
+}
+
+.center-side-message {
+    align-self: center;
+}
+
+.right-side-message {
+    align-self: flex-end;
+}
