@@ -8,17 +8,28 @@ import { LiveChatService } from './../../services/live-chat-service';
     styleUrls: [ 'home.component.scss']
 })
 export class HomeComponent {
-
     private _liveChatService: LiveChatService;
     private _router: Router;
+    private _hasInputError: boolean;
 
     constructor(router: Router, liveChatService: LiveChatService) {
         this._router = router;
         this._liveChatService = liveChatService;
+        this._hasInputError = false;
     }
 
-    public onEnterButtonClicked(userName: string){
-        this._liveChatService.setUserName(userName);
-        this._router.navigate(['/live-chat']);
+    public get hasInpurError(): boolean{
+        return this._hasInputError;
+    }
+
+    public onEnterButtonClicked(userName: string): void {
+        this._hasInputError = userName === '' || userName === undefined;
+
+        if (this._hasInputError) {
+            this._hasInputError = true;
+        } else {
+            this._liveChatService.setUserName(userName);
+            this._router.navigate(['/live-chat']);
+        }
     }
 }
