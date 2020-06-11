@@ -18,17 +18,17 @@ namespace LiveChatServer.Hubs {
 
         public async Task OnEnterChatAsync(string userName)
         {
-            await Clients.Group(LIVE_CHAT_GROUP).OnEnterChatAsync(userName);
+            await Clients.OthersInGroup(LIVE_CHAT_GROUP).OnEnterChatAsync(userName);
         }
 
         public async Task OnExitChatAsync(string userName)
         {
-            await Clients.Group(LIVE_CHAT_GROUP).OnExitChatAsync(userName);
+            await Clients.OthersInGroup(LIVE_CHAT_GROUP).OnExitChatAsync(userName);
         }
 
         public async Task OnNewMessageAsync(string userName, string message)
         {
-            await Clients.Groups(LIVE_CHAT_GROUP).OnNewMessageAsync(userName, message);
+            await Clients.OthersInGroup(LIVE_CHAT_GROUP).OnNewMessageAsync(userName, message);
         }
     }
 }
