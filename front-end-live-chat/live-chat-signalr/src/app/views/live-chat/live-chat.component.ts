@@ -1,5 +1,6 @@
-import { MessageDTO } from './DTO/MessageDTO';
 import { Component, OnInit } from '@angular/core';
+import { LiveChatService } from './../../services/live-chat-service';
+import { MessageDTO } from './DTO/MessageDTO';
 import { MessageTypeEnum } from './Enums/MessageTypeEnum';
 
 @Component({
@@ -12,28 +13,27 @@ export class LiveChatComponent implements OnInit {
     public messageTypeEnumRef: typeof MessageTypeEnum;
     public chatMessages: MessageDTO[];
 
-    constructor(){
+    private _liveChatService: LiveChatService;
+
+    constructor(liveChatService: LiveChatService){
         this.chatMessages = [];
         this.messageTypeEnumRef = MessageTypeEnum;
+        this._liveChatService = liveChatService;
     }
 
     public ngOnInit(): void {
-        const myMsg = new MessageDTO();
-        myMsg.userName = 'Alef';
-        myMsg.content = 'Olá';
-        myMsg.messageType = MessageTypeEnum.CurrentUserMessage;
+        localStorage.setItem('userName', 'Alef');
 
-        const otherMsg = new MessageDTO();
-        myMsg.userName = 'Fulano';
-        otherMsg.content = 'Olá ! Tudo bem ?';
-        otherMsg.messageType = MessageTypeEnum.OtherUser;
+        this._liveChatService.initializeNewUserConnection();
+        this._liveChatService.newMessageReceivedEvent.subscribe((newMessage: MessageDTO) => {
+            this.chatMessages.push(newMessage);
+        });
+    }
 
-        const userEntered = new MessageDTO();
-        userEntered.content = 'Fulano entrou no chat';
-        userEntered.messageType = MessageTypeEnum.ChatActions;
-
-        this.chatMessages.push(myMsg);
-        this.chatMessages.push(otherMsg);
-        this.chatMessages.push(userEntered);
+    public sendNewMessage(messageContent: string): void {
+        const currentUserName = this._liveChatService.CurrentUserName;
+        const newMessage = new MessageDTO(currentUserName, messageContent, MessageTypeEnum.CurrentUserMessage);
+        this.chatMessages.push(newMessage);
+        this._liveChatService.sendNewMessage(messageContent);
     }
 }
