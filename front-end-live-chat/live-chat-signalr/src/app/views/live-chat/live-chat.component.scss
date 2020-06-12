@@ -12,6 +12,7 @@ main {
     height: 50vh;
     width: 80%;
     max-width: 800px;
+    min-width: 800px;
     padding: 10px;
 
     border-radius: 15px;
@@ -75,6 +76,25 @@ main {
     height: 20%;
     align-items: center;
     justify-content: center;
+}
+
+.new-message-field {
+    width: 70%;
+    resize: none;
+    border-radius: 5px;
+    overflow: hidden;
+    outline: none;
+
+    border-color: #8ccddb;
+    border-width: 1px;
+
+    transition: border-color .3s ease-in-out;
+    transition: border-width .3s ease-in-out;
+
+    &:hover {
+        border: 2px solid;
+        border-color: #36acc7;
+    }
 }
 
 .send-new-message-btn {

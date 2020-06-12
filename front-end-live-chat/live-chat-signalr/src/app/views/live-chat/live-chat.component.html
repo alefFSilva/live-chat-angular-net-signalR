@@ -16,8 +16,9 @@
     </div>
 
     <div class="new-message-container">
-        <input #newMessageInput class="new-message-field" type="text" 
-            (keyup.enter) = "sendNewMessage(newMessageInput)" />
+        <textarea class="new-message-field" #newMessageInput placeholder="Escreva uma mensagem . . ."
+            (keyup.enter) = "sendNewMessage(newMessageInput)">
+        </textarea >
         <div class="send-new-message-btn" 
             (click)="sendNewMessage(newMessageInput)" >
             <p> Enviar</p>
