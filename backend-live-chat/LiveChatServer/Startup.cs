@@ -22,7 +22,9 @@ namespace LiveChatServer
                         builder
                             .AllowAnyHeader()
                             .AllowAnyMethod()
-                            .WithOrigins("http://localhost:4200")
+                            .WithOrigins(
+                                "http://localhost:4200", 
+                                "https://live-chat-angular-signalr.herokuapp.com")
                             .AllowCredentials();
                     });
                 });
