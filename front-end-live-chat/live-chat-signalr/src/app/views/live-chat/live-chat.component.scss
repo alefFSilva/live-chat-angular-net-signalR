@@ -9,6 +9,7 @@ main, .messages-container, .message {
 main {
     font-family: 'Roboto', sans-serif;
     margin: 0 auto;
+    margin-top: 10em;
     height: 50vh;
     width: 80%;
     max-width: 800px;
@@ -75,7 +76,8 @@ main {
 .new-message-container {
     height: 20%;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 0px 40px;
 }
 
 .new-message-field {
@@ -99,14 +101,25 @@ main {
     }
 }
 
-.send-new-message-btn {
+.send-new-message-btn, .leave-chat-btn {
     cursor: pointer;
     font-size: 35px;
-    color: rgb(142, 206, 231);
+}
 
+.send-new-message-btn {
+    color: rgb(142, 206, 231);
     transition: color .4s ease-in-out;
 
     &:hover {
         color: rgb(55, 166, 211);
+    }
+}
+
+.leave-chat-btn {
+    color:  #e67373;
+    transition: color .5s ease-in-out;
+
+    &:hover {
+        color:  #e72a2a;
     }
 }

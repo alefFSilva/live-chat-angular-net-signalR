@@ -16,12 +16,14 @@
     </div>
 
     <div class="new-message-container">
+        <div class="leave-chat-btn" (click)="leaveChat()" >
+            <fa-icon [icon]="leaveChatIcon"></fa-icon>
+        </div> 
         <textarea class="new-message-field" #newMessageInput 
             placeholder="Escreva uma mensagem . . ."
             (keyup.enter) = "sendNewMessage(newMessageInput)">
         </textarea>
-        <div class="send-new-message-btn"
-            (click)="sendNewMessage(newMessageInput)" >
+        <div class="send-new-message-btn" (click)="sendNewMessage(newMessageInput)" >
             <fa-icon [icon]="sendMessageIcon"></fa-icon>
         </div> 
     </div>

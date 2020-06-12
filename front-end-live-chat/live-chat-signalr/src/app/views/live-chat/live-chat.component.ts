@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
+import { Router } from '@angular/router';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { faArrowAltCircleRight, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { LiveChatService } from './../../services/live-chat-service';
 import { MessageDTO } from './DTO/MessageDTO';
 import { MessageTypeEnum } from './Enums/MessageTypeEnum';
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-import { faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'live-chat',
@@ -14,16 +15,20 @@ export class LiveChatComponent implements OnInit, AfterViewChecked {
     public messageTypeEnumRef: typeof MessageTypeEnum;
     public chatMessages: MessageDTO[];
     public sendMessageIcon: IconDefinition;
+    public leaveChatIcon: IconDefinition;
 
     @ViewChild('messagesContainer')
     private _messagesContainer: ElementRef;
     private _liveChatService: LiveChatService;
+    private _router: Router;
 
-    constructor(liveChatService: LiveChatService){
+    constructor(liveChatService: LiveChatService, router: Router){
         this.chatMessages = [];
         this.messageTypeEnumRef = MessageTypeEnum;
         this._liveChatService = liveChatService;
+        this._router = router;
         this.sendMessageIcon = faArrowAltCircleRight;
+        this.leaveChatIcon = faSignOutAlt;
     }
 
     public ngAfterViewChecked(): void {
@@ -48,6 +53,10 @@ export class LiveChatComponent implements OnInit, AfterViewChecked {
         this.chatMessages.push(newMessage);
         this._liveChatService.sendNewMessage(messageContent);
         messageInput.value = '';
+    }
+
+    public leaveChat(): void {
+        this._router.navigate(['']);
     }
 
     private scrollPageToBottom(): void {
