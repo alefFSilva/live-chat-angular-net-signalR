@@ -2,9 +2,16 @@
 
     <div #messagesContainer class="messages-container">
         <div class="message" *ngFor="let message of chatMessages" 
-            [class.right-side-message] = "message.type == messageTypeEnumRef.CurrentUserMessage"
-            [class.center-side-message] = "message.type == messageTypeEnumRef.ChatActions">
-            <p> {{ message.content }} </p>
+            [class.right-side-message] = "message.type === messageTypeEnumRef.CurrentUserMessage"
+            [class.center-side-message] = "message.type === messageTypeEnumRef.ChatActions">
+
+            <div class="message-content" [class.message-content-right-side] = "message.type === messageTypeEnumRef.CurrentUserMessage">
+                <p> {{ message.content }} </p>
+            </div>
+            <p class="user-name" *ngIf = "message.type !== messageTypeEnumRef.ChatActions"
+                [class.user-name-right-side] = "message.type === messageTypeEnumRef.CurrentUserMessage"> 
+                {{ message.userName }}
+            </p>
         </div>
     </div>
 

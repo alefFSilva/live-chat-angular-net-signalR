@@ -1,20 +1,25 @@
+main, .messages-container, .new-message-container, .message {
+    display: flex;
+}
+
+main, .messages-container, .message {
+    flex-direction: column;
+}
+
 main {
+    font-family: 'Roboto', sans-serif;
     margin: 0 auto;
-    border: 5px solid green;
     height: 50vh;
     width: 80%;
+    max-width: 800px;
+    padding: 10px;
+
+    border-radius: 15px;
+    box-shadow: 0px 3px 6px 5px #c3bebe;
 
     p {
         margin: 0;
     }
-}
-
-main, .messages-container, .new-message-container{
-    display: flex;
-}
-
-main, .messages-container {
-    flex-direction: column;
 }
 
 .messages-container {
@@ -22,8 +27,7 @@ main, .messages-container {
     flex-direction: column;
     height: 80%;
     overflow-y: auto;
-
-    border: 1px solid blue;
+    border-bottom: 1px solid #c8c1c1;
 }
 
 .messages-container > :first-child {
@@ -31,8 +35,32 @@ main, .messages-container {
 }
 
 .message {
-    width: 20%;
-    border: 1px solid red;
+    width: 36%;
+    padding: 10px;
+}
+
+.message-content {
+    padding: 20px;
+    background-color: #fd9999;
+    border-radius: 6px;
+    color: #534242;;
+    letter-spacing: 1px;
+}
+
+.message-content-right-side {
+    background-color: #9cd6ea;
+}
+
+.user-name {
+    align-self: flex-end;
+    padding: 4px 10px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: #fd9999;
+}
+
+.user-name-right-side {
+    color: #26a9c7;
 }
 
 .center-side-message {
