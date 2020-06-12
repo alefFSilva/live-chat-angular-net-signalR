@@ -1,13 +1,8 @@
-body {
-    margin: 0px;
-}
-
 main {
     display: flex;
     flex-direction: column;
     align-items: center;
     font-family: sans-serif;
-    min-width: 700px;
 }
 
 .angular-signal-logotipos > img {
@@ -16,21 +11,17 @@ main {
     max-height: 185px;
 }
 
-.app-description {
-    font-size: 2em;
-}
-
 .name-field-enter-chat-button {
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    width: 50%;
+    width: 80%;
     max-width: 600px;
     margin-top: 5em;
-    border-radius: 15px;
+    border-radius: 6px;
     padding: 20px;
-    box-shadow: 6px 4px 17px #666468;;
+    box-shadow: 2px 4px 17px #666468;
 }
 
 .name-field {
@@ -84,9 +75,4 @@ main {
         background-color: rgb(164, 215, 240);
         color: white;
     }
-}
-
-.github-link {
-    color: black;
-    font-size: 2em;
 }

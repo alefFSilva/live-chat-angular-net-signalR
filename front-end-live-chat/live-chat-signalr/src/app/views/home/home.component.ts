@@ -11,7 +11,6 @@ import { LiveChatService } from './../../services/live-chat-service';
     styleUrls: [ 'home.component.scss']
 })
 export class HomeComponent {
-    public gitHubIcon: IconDefinition;
 
     private _liveChatService: LiveChatService;
     private _router: Router;
@@ -21,7 +20,6 @@ export class HomeComponent {
         this._router = router;
         this._liveChatService = liveChatService;
         this._hasInputError = false;
-        this.gitHubIcon = faGithub;
     }
 
     public get hasInpurError(): boolean{

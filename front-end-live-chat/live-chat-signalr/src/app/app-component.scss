@@ -1,0 +1,21 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 400px;
+}
+
+footer {
+    margin-top: 2em;
+}
+
+.app-description {
+    font-size: 2em;
+    text-align: center;
+}
+
+.github-link {
+    align-self: flex-end;
+    color: black;
+    font-size: 3em;
+}

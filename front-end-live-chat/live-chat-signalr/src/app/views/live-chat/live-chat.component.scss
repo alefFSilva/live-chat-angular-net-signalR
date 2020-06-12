@@ -1,3 +1,7 @@
+:host {
+    width: 100%;
+}
+
 main, .messages-container, .new-message-container, .message, .loading-img {
     display: flex;
 }
@@ -9,14 +13,12 @@ main, .messages-container, .message {
 main {
     font-family: 'Roboto', sans-serif;
     margin: 0 auto;
-    margin-top: 10em;
     height: 50vh;
     width: 80%;
     max-width: 800px;
-    min-width: 800px;
     padding: 10px;
 
-    border-radius: 15px;
+    border-radius: 8px;
     box-shadow: 0px 3px 6px 5px #c3bebe;
 
     p {
@@ -37,8 +39,9 @@ main {
 }
 
 .message {
-    width: 36%;
     padding: 10px;
+    max-width: 40%;
+    min-width: 100px;
 }
 
 .message-content {
@@ -47,6 +50,7 @@ main {
     border-radius: 6px;
     color: #534242;;
     letter-spacing: 1px;
+    overflow-wrap: break-word;
 }
 
 .message-content-right-side {
@@ -54,6 +58,7 @@ main {
 }
 
 .action-message {
+    width: 100%;
     background-color: #71f6aa;
     color: #000000;
     text-align: center;
@@ -78,6 +83,7 @@ main {
 
 .right-side-message {
     align-self: flex-end;
+    width: 40%;
 }
 
 .new-message-container {
@@ -89,7 +95,7 @@ main {
 
 .new-message-field {
     width: 70%;
-    margin-right: 1em;
+    margin: 1em;
 
     resize: none;
     border-radius: 5px;
@@ -134,3 +140,13 @@ main {
 .loading-img {
     justify-content: center;
 }
+
+  @media screen and (max-width: 800px) {
+    .message {
+      min-width: 80%;
+    }
+
+    .right-side-message{
+        width: 80%;
+    }
+  }
