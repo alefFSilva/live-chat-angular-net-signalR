@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faArrowAltCircleRight, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { LiveChatService } from './../../services/live-chat-service';
@@ -21,14 +21,17 @@ export class LiveChatComponent implements OnInit, AfterViewChecked {
     private _messagesContainer: ElementRef;
     private _liveChatService: LiveChatService;
     private _router: Router;
+    private _activatedRoute: ActivatedRoute;
 
-    constructor(liveChatService: LiveChatService, router: Router){
+    constructor(liveChatService: LiveChatService, router: Router, route: ActivatedRoute){
         this.chatMessages = [];
         this.messageTypeEnumRef = MessageTypeEnum;
+        this._activatedRoute = route;
         this._liveChatService = liveChatService;
         this._router = router;
         this.sendMessageIcon = faArrowAltCircleRight;
         this.leaveChatIcon = faSignOutAlt;
+
     }
 
     public ngAfterViewChecked(): void {
@@ -38,7 +41,11 @@ export class LiveChatComponent implements OnInit, AfterViewChecked {
     }
 
     public ngOnInit(): void {
-        this._liveChatService.initializeNewUserConnection();
+        this._activatedRoute.queryParams.subscribe((params: Params) => {
+            const userName = params['userName'];
+            this._liveChatService.initializeNewUserConnection(userName);
+        });
+
         this._liveChatService.newMessageReceivedEvent.subscribe((newMessage: MessageDTO) => {
             this.chatMessages.push(newMessage);
         });

@@ -10,18 +10,21 @@ export class LiveChatService {
     public userExitEvent: EventEmitter<MessageDTO>;
 
     private _hubConnection: signalR.HubConnection;
+    private _currentUserName: string;
 
     constructor() {
         this.newMessageReceivedEvent = new EventEmitter<MessageDTO>();
         this.userEnteredEvent = new EventEmitter<MessageDTO>();
         this.userExitEvent = new EventEmitter<MessageDTO>();
+        this._currentUserName = '';
     }
 
     public get CurrentUserName(): string {
-        return localStorage.getItem('userName');
+        return this._currentUserName;
     }
 
-    public initializeNewUserConnection(): void {
+    public initializeNewUserConnection(userName: string): void {
+        this._currentUserName = userName;
         this._hubConnection = new signalR.HubConnectionBuilder()
         .withUrl('https://localhost:5001/liveChatHub')
         .build();

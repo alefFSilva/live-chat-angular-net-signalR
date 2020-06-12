@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { LiveChatService } from './../../services/live-chat-service';
@@ -35,7 +35,12 @@ export class HomeComponent {
             this._hasInputError = true;
         } else {
             this._liveChatService.setUserName(userName);
-            this._router.navigate(['/live-chat']);
+            const navigationExtras: NavigationExtras = {
+                queryParams: {
+                    userName
+                }
+            };
+            this._router.navigate(['/live-chat'], navigationExtras);
         }
     }
 }
