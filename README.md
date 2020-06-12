@@ -1,7 +1,7 @@
 
 ## Live Chat usando Angular 9 + ASP .NET Core 3.1  + SignalR
 
-[DEMO](https://live-chat-angular-signalr.herokuapp.com/)
+<a href="https://live-chat-angular-signalr.herokuapp.com/" target="_blank">DEMO</a>
 
 Este é um projeto de live chat desenvolvido com Angular 9, ASP .NET Core 3.1 e SignalR.
 
