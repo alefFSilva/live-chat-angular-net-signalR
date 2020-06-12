@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { LiveChatService } from './../../services/live-chat-service';
+
 
 @Component({
     selector: 'home-component',
@@ -8,6 +11,8 @@ import { LiveChatService } from './../../services/live-chat-service';
     styleUrls: [ 'home.component.scss']
 })
 export class HomeComponent {
+    public gitHubIcon: IconDefinition;
+
     private _liveChatService: LiveChatService;
     private _router: Router;
     private _hasInputError: boolean;
@@ -16,6 +21,7 @@ export class HomeComponent {
         this._router = router;
         this._liveChatService = liveChatService;
         this._hasInputError = false;
+        this.gitHubIcon = faGithub;
     }
 
     public get hasInpurError(): boolean{

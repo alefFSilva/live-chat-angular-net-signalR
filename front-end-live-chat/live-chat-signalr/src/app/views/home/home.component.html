@@ -1,6 +1,12 @@
 <main>
     <header class="app-description">
-        <p> Live Chat with Angular 9 & ASP .NET SignalR</p>
+        <p> 
+            Live Chat with Angular 9 & ASP .NET SignalR
+            
+            <a target="_blank" class="github-link" href="https://github.com/alefFSilva/live-chat-angular-net-signalR">
+                <fa-icon [icon]="gitHubIcon"></fa-icon>
+            </a>
+        </p>
     </header>
     
     <div class="angular-signal-logotipos">
@@ -8,10 +14,11 @@
         <img src="../../../assets/img/signalr.png" />
     </div>
 
-    
     <div class="name-field-enter-chat-button">
-        <input #inputName type="text" class="name-field" placeholder="Digite seu nome" 
-        [class.input-field-error] = "hasInpurError"  />
+        <input #inputName type="text" class="name-field" 
+            (keyup.enter)="onEnterButtonClicked(inputName.value)"
+            placeholder="Digite seu nome" 
+            [class.input-field-error] = "hasInpurError"  />
         <p class="user-name-error-message" *ngIf="hasInpurError">
             Insira um nome de usuário, por favor.
         </p>
