@@ -38,8 +38,6 @@ export class LiveChatComponent implements OnInit, AfterViewChecked {
     }
 
     public ngOnInit(): void {
-        localStorage.setItem('userName', 'Alef');
-
         this._liveChatService.initializeNewUserConnection();
         this._liveChatService.newMessageReceivedEvent.subscribe((newMessage: MessageDTO) => {
             this.chatMessages.push(newMessage);
