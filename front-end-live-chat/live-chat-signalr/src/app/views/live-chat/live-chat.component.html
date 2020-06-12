@@ -1,6 +1,9 @@
-<main *ngIf = "liveChatOn">
+<main>
+    <div class="loading-img" *ngIf="!liveChatOn" >
+        <img src="../../../assets/img/loading.gif">
+    </div>
 
-    <div #messagesContainer class="messages-container">
+    <div #messagesContainer class="messages-container" *ngIf = "liveChatOn">
         <div class="message" *ngFor="let message of chatMessages" 
             [class.right-side-message] = "message.type === messageTypeEnumRef.CurrentUserMessage"
             [class.center-side-message] = "message.type === messageTypeEnumRef.ChatActions">
@@ -17,7 +20,7 @@
         </div>
     </div>
 
-    <div class="new-message-container">
+    <div class="new-message-container" *ngIf = "liveChatOn">
         <div class="leave-chat-btn" (click)="leaveChatAsync()" >
             <fa-icon [icon]="leaveChatIcon"></fa-icon>
         </div> 

@@ -1,4 +1,4 @@
-main, .messages-container, .new-message-container, .message {
+main, .messages-container, .new-message-container, .message, .loading-img {
     display: flex;
 }
 
@@ -129,4 +129,8 @@ main {
     &:hover {
         color:  #e72a2a;
     }
+}
+
+.loading-img {
+    justify-content: center;
 }
