@@ -5,6 +5,7 @@ import { MessageDTO } from './../views/live-chat/DTO/MessageDTO';
 
 export class LiveChatService {
 
+    public onConnectionSuccessfully: EventEmitter<void>;
     public newMessageReceivedEvent: EventEmitter<MessageDTO>;
     public userEnteredEvent: EventEmitter<MessageDTO>;
     public userExitEvent: EventEmitter<MessageDTO>;
@@ -16,6 +17,7 @@ export class LiveChatService {
         this.newMessageReceivedEvent = new EventEmitter<MessageDTO>();
         this.userEnteredEvent = new EventEmitter<MessageDTO>();
         this.userExitEvent = new EventEmitter<MessageDTO>();
+        this.onConnectionSuccessfully = new EventEmitter();
         this._currentUserName = '';
     }
 
@@ -23,19 +25,20 @@ export class LiveChatService {
         return this._currentUserName;
     }
 
-    public initializeNewUserConnection(userName: string): void {
+    public initializeNewUserConnectionAsync(userName: string): Promise<void> {
         this._currentUserName = userName;
         this._hubConnection = new signalR.HubConnectionBuilder()
-        .withUrl('https://localhost:5001/liveChatHub')
-        .build();
-
-        this._hubConnection.start().then(() => {
-            this._hubConnection.send('OnEnterChatAsync', this.CurrentUserName);
-        });
+                                .withUrl('https://localhost:5001/liveChatHub')
+                                .build();
 
         this.assignNewMessageReceived();
         this.assignOnUserEnterChatAsync();
         this.assignOnUserExitChatAsync();
+
+        return this._hubConnection.start().then(() => {
+            this.onConnectionSuccessfully.emit();
+            this._hubConnection.send('OnEnterChatAsync', this.CurrentUserName);
+        });
     }
 
     public leaveChatAsync(): Promise<void> {

@@ -1,4 +1,4 @@
-<main>
+<main *ngIf = "liveChatOn">
 
     <div #messagesContainer class="messages-container">
         <div class="message" *ngFor="let message of chatMessages" 
