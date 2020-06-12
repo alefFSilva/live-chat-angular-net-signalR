@@ -18,7 +18,7 @@ namespace LiveChatServer.Hubs {
 
         public async Task OnEnterChatAsync(string userName)
         {
-            await Clients.OthersInGroup(LIVE_CHAT_GROUP).OnEnterChatAsync(userName);
+            await Clients.Groups(LIVE_CHAT_GROUP).OnEnterChatAsync(userName);
         }
 
         public async Task OnExitChatAsync(string userName)
