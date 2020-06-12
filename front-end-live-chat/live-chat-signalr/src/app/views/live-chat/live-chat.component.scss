@@ -80,6 +80,8 @@ main {
 
 .new-message-field {
     width: 70%;
+    margin-right: 1em;
+
     resize: none;
     border-radius: 5px;
     overflow: hidden;
@@ -99,4 +101,12 @@ main {
 
 .send-new-message-btn {
     cursor: pointer;
+    font-size: 35px;
+    color: rgb(142, 206, 231);
+
+    transition: color .4s ease-in-out;
+
+    &:hover {
+        color: rgb(55, 166, 211);
+    }
 }

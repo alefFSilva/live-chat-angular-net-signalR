@@ -16,12 +16,13 @@
     </div>
 
     <div class="new-message-container">
-        <textarea class="new-message-field" #newMessageInput placeholder="Escreva uma mensagem . . ."
+        <textarea class="new-message-field" #newMessageInput 
+            placeholder="Escreva uma mensagem . . ."
             (keyup.enter) = "sendNewMessage(newMessageInput)">
-        </textarea >
-        <div class="send-new-message-btn" 
+        </textarea>
+        <div class="send-new-message-btn"
             (click)="sendNewMessage(newMessageInput)" >
-            <p> Enviar</p>
+            <fa-icon [icon]="sendMessageIcon"></fa-icon>
         </div> 
     </div>
 
