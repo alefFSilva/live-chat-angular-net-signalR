@@ -60,8 +60,11 @@ export class LiveChatComponent implements OnInit, AfterViewChecked {
         messageInput.value = '';
     }
 
-    public leaveChat(): void {
-        this._router.navigate(['']);
+    public leaveChatAsync(): void {
+        this._liveChatService.leaveChatAsync()
+        .then(() => {
+            this._router.navigate(['']);
+        });
     }
 
     private scrollPageToBottom(): void {

@@ -38,6 +38,13 @@ export class LiveChatService {
         this.assignOnUserExitChatAsync();
     }
 
+    public leaveChatAsync(): Promise<void> {
+        return this._hubConnection.send('OnExitChatAsync', this.CurrentUserName)
+                .then(() => {
+                    this._hubConnection.stop();
+                });
+    }
+
     public sendNewMessage(message: string): void{
         this._hubConnection.send('OnNewMessageAsync', this.CurrentUserName, message);
     }
