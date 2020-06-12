@@ -1,16 +1,18 @@
 <main>
 
-    <div class="messages-container">
+    <div #messagesContainer class="messages-container">
         <div class="message" *ngFor="let message of chatMessages" 
-            [class.right-side-message] = "message.messageType == messageTypeEnumRef.CurrentUserMessage"
-            [class.center-side-message] = "message.messageType == messageTypeEnumRef.ChatActions">
+            [class.right-side-message] = "message.type == messageTypeEnumRef.CurrentUserMessage"
+            [class.center-side-message] = "message.type == messageTypeEnumRef.ChatActions">
             <p> {{ message.content }} </p>
         </div>
     </div>
 
     <div class="new-message-container">
-        <input #newMessageInput class="new-message-field" type="text" />
-        <div class="send-new-message-btn" (click)="sendNewMessage(newMessageInput.value)">
+        <input #newMessageInput class="new-message-field" type="text" 
+            (keyup.enter) = "sendNewMessage(newMessageInput)" />
+        <div class="send-new-message-btn" 
+            (click)="sendNewMessage(newMessageInput)" >
             <p> Enviar</p>
         </div> 
     </div>
