@@ -5,7 +5,9 @@
             [class.right-side-message] = "message.type === messageTypeEnumRef.CurrentUserMessage"
             [class.center-side-message] = "message.type === messageTypeEnumRef.ChatActions">
 
-            <div class="message-content" [class.message-content-right-side] = "message.type === messageTypeEnumRef.CurrentUserMessage">
+            <div class="message-content" 
+                [class.message-content-right-side] = "message.type === messageTypeEnumRef.CurrentUserMessage"
+                [class.action-message]="message.type === messageTypeEnumRef.ChatActions">
                 <p> {{ message.content }} </p>
             </div>
             <p class="user-name" *ngIf = "message.type !== messageTypeEnumRef.ChatActions"
