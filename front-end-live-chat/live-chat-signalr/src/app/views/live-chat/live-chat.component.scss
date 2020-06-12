@@ -21,8 +21,13 @@ main, .messages-container {
     display: flex;
     flex-direction: column;
     height: 80%;
+    overflow-y: auto;
 
     border: 1px solid blue;
+}
+
+.messages-container > :first-child {
+    margin-top: auto;
 }
 
 .message {
