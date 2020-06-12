@@ -1,12 +1,21 @@
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppComponent } from './app.component';
 import { LiveChatComponent } from './views/live-chat/live-chat.component';
 import { LiveChatService } from './services/live-chat-service';
 import { HomeComponent } from './views/home/home.component';
-import { APP_ROUTES } from './routes/APP_ROUTES';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+export const APP_ROUTES: Routes = [
+  {
+    path: '', component: HomeComponent
+  },
+  {
+    path: 'live-chat', component: LiveChatComponent
+  }
+];
+
 
 @NgModule({
   declarations: [
